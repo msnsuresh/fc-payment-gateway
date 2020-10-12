@@ -1,1 +1,1 @@
-# fc-payment-gateway
+# fc-recipe-payment-gateway
