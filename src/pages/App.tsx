@@ -1,6 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 import ProductListing from "../containers/ProductListing";
+import { auth } from "../utils/Firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import SingIn from "../components/SignIn/SingIn";
+import SignOut from "../components/SignOut/SignOut";
 
 const HeaderStyled = styled.div`
   border-top: 3px solid #e3714d;
@@ -14,6 +18,7 @@ const HeaderStyled = styled.div`
 `;
 
 const App: React.FC = () => {
+  const [user] = useAuthState(auth);
   return (
     <>
       <HeaderStyled className="px-3 py-2 mb-4" style={{ fontSize: "1.25rem" }}>
@@ -21,7 +26,14 @@ const App: React.FC = () => {
       </HeaderStyled>
       <div className="container">
         <div className="row">
-          <ProductListing />
+          {user ? (
+            <>
+              <ProductListing />
+              <SignOut />
+            </>
+          ) : (
+            <SingIn />
+          )}
         </div>
       </div>
     </>
