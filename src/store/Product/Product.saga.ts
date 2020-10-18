@@ -1,8 +1,22 @@
 import { AxiosResponse } from "axios";
-import { all, AllEffect, call, CallEffect, fork, ForkEffect, put, PutEffect, takeEvery } from "redux-saga/effects";
+import {
+  all,
+  AllEffect,
+  call,
+  CallEffect,
+  fork,
+  ForkEffect,
+  put,
+  PutEffect,
+  takeEvery,
+} from "redux-saga/effects";
 import API from "../../utils/API";
 import { errorProducts, getOkProducts } from "./Product.actions";
-import { GetErrorProductActionType, GetOkProductsActionType, ProductActionTypes } from "./Product.types";
+import {
+  GetErrorProductActionType,
+  GetOkProductsActionType,
+  ProductActionTypes,
+} from "./Product.types";
 
 async function getProducts(): Promise<AxiosResponse> {
   return API.get("/recipe.json");
